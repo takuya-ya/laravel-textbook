@@ -43,6 +43,7 @@ return [
             'foreign_key_constraints' => env('DB_FOREIGN_KEYS', true),
         ],
 
+        // これは .env ファイルに DB_USERNAME が存在すればその値を使い、存在しなければ 'forge' を使う という意味です。
         'mysql' => [
             'driver' => 'mysql',
             'url' => env('DATABASE_URL'),
