@@ -18,8 +18,9 @@
     <body class="antialiased">
         @auth
             @for ($i = 0; $i <10; $i++)
-            {{ $i}},
+                {{ $i }},
             @endfor
+
             <p>
                 {{ Auth::user()->name }}さん、こんにちは。
             </p>
