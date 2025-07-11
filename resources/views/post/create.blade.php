@@ -1,12 +1,12 @@
 <x-app-layout>
-    <!-- ここが{{ $header }} にはいる-->
+    <!-- ここが$header にはいる-->
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
             {{ __('Dashboard') }}
         </h2>
     </x-slot>
 
-    <!-- 以下がデフォルトスロット{{ $slot }}に入る　 -->
+    <!-- 以下がデフォルトスロット $slot に入る　 -->
      <div class="max-w-7xl mx-auto px-6">
         <form>
             <div class="mt-8">
