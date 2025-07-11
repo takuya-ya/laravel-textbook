@@ -12,7 +12,13 @@ class Post extends Model
     protected $fillable = [
         'title',
         'body',
+        'user_id',
     ];
+
+    // Userテーブルと1対多のリレーションを設定
+    public function user() {
+        return $this->belongsTo(User::class);
+    }
 }
 
 

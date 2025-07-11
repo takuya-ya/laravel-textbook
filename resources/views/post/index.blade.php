@@ -18,7 +18,10 @@
             </p>
             <div class="p-4 text-sm font-semibold">
                 <p>
-                    {{$post->created_at}}
+                    <!-- 注：この記法はHTMLコメントの為、ブラウザのソースコードに表示されてしまうよ -->
+                    {{-- この行はLaravelのコメントアウト記法です。こっちの記法を使用しよう --}}
+                    {{-- ??でnull合体演算子により、nullだった場合のmessageを記述 --}}
+                    {{$post->created_at}} / {{$post->user->name??'postsテーブルにuser_idカラムが無かった時の投稿だよ'}}
                 </p>
             </div>
         </div>

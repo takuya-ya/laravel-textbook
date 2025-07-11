@@ -20,6 +20,8 @@ class PostController extends Controller
             'body' => 'required|max:400',
         ]);
     
+        // user_id情報を追加
+        $validated['user_id'] = auth() -> id();
         // **Postとは静的メソッドでなく、Eloquentモデルに組み込まれた「静的風API」**です
         $post =  Post::create($validated);
 
