@@ -27,6 +27,11 @@ class PostController extends Controller
         // $request->session()->flash('message', '保存しました');
         // return redirect()->route('create'); // ← 明示的に
         return redirect()->route('create')->with('message', '保存しました');
+    }
 
+    // Postモデルを通じて、postsテーブルのデータを全て取得
+    public function index() {
+        $posts = Post::all();
+        return view('post.index', compact('posts'));
     }
 }
