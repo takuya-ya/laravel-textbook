@@ -3,11 +3,30 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Post;
+
+use function PHPSTORM_META\map;
 
 class PostController extends Controller
 {
     //
     public function create() {
         return view('post.create');
+    }
+
+    public function store(Request $request) {
+        $validated = $request->validate([
+            'title' => 'required|max:20',
+            'body' => 'required|max:400',
+        ]);
+    
+        // **Postとは静的メソッドでなく、Eloquentモデルに組み込まれた「静的風API」**です
+        $post =  Post::create($validated);
+
+        // falshだとVScodeの補完エラーが出るのでwithを使用
+        // $request->session()->flash('message', '保存しました');
+        // return redirect()->route('create'); // ← 明示的に
+        return redirect()->route('create')->with('message', '保存しました');
+
     }
 }
