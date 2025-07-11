@@ -42,4 +42,8 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+    // Userテーブルと1対多のリレーションを設定
+    public function posts() {
+        return $this->hasMany(Post::class);
+    }
 }
