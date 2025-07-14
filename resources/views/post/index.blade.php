@@ -9,9 +9,10 @@
     <div class="mx-auto px-6">
         @foreach($posts as $post)
         <div class="mt-4 p-8 bg-white w-full rounded-2xl">
-            <h1 class="p-4 text-lg font-semibold">
+            <a href="{{route('post.show', $post)}}" 
+            class="text-blue-600">
                 {{$post->title}}
-            </h1>
+            </a>
             <hr class="w-full">
             <p class="mt-4 p-4">
                 {{$post->body}}
@@ -21,7 +22,7 @@
                     <!-- 注：この記法はHTMLコメントの為、ブラウザのソースコードに表示されてしまうよ -->
                     {{-- この行はLaravelのコメントアウト記法です。こっちの記法を使用しよう --}}
                     {{-- ??でnull合体演算子により、nullだった場合のmessageを記述 --}}
-                    {{$post->created_at}} / {{$post->user->name??'postsテーブルにuser_idカラムが無かった時の投稿だよ'}}
+                    {{$post->created_at}} / {{$post->user->name??'postsテーブルのuser_idカラムがnullの場合にエラーになるのでこの文章を代入します'}}
                 </p>
             </div>
         </div>
