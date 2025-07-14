@@ -18,7 +18,9 @@ use App\Http\Controllers\PostController;
 
 Route::get('/', function () {
     return view('welcome');
-});
+})
+// ->middleware('can:test')
+; //testゲートを適用
 
 Route::get('/dashboard', function () {
     return view('dashboard');
@@ -31,8 +33,12 @@ Route::middleware('auth')->group(function () {
 });
 
 Route::get('/test', [TestController::class, 'test'])->name('test');
-Route::get('post/create', [PostController::class, 'create'])->name('create');
 Route::post('post', [PostController::class, 'store'])->name('post.store');
-Route::get('post', [PostController::class, 'index']);
+// Route::middleware(['auth', 'can:admin'])->group(function() {
+    Route::get('post', [PostController::class, 'index']);
+    Route::get('post/create', [PostController::class, 'create'])->name('create');
+// });
+
+
 
 require __DIR__.'/auth.php';
