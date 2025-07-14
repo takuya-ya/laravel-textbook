@@ -39,6 +39,15 @@ Route::post('post', [PostController::class, 'store'])->name('post.store');
     Route::get('post/create', [PostController::class, 'create'])->name('create');
 // });
 
+// CRUDのルーティングを定義
+// postの個別ページ
+Route::get('post/show/{post}', [PostController::class, 'show'])->name('post.show');
+// 編集ページ
+Route::get('post/{post}/edit', [PostController::class, 'edit'])->name('post.edit');
+// 更新処理 patchの代わりにputでも問題ない
+Route::patch('post/{post}', [PostController::class, 'update'])->name('post.update');
+
+
 
 
 require __DIR__.'/auth.php';
