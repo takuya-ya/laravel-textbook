@@ -16,6 +16,10 @@
         </style>
     </head>
     <body class="antialiased">
+        @can('test')
+            あなたはID1のユーザーです。Gateは有効です。
+        @endcan
+
         @auth
             @for ($i = 0; $i <10; $i++)
                 {{ $i }},

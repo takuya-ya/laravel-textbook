@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Post;
+use Illuminate\Support\Facades\Gate;
 
 use function PHPSTORM_META\map;
 
@@ -15,6 +16,7 @@ class PostController extends Controller
     }
 
     public function store(Request $request) {
+        Gate::authorize('test');
         $validated = $request->validate([
             'title' => 'required|max:20',
             'body' => 'required|max:400',
