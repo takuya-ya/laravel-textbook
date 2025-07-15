@@ -35,7 +35,7 @@ Route::middleware('auth')->group(function () {
 Route::get('/test', [TestController::class, 'test'])->name('test');
 Route::post('post', [PostController::class, 'store'])->name('post.store');
 // Route::middleware(['auth', 'can:admin'])->group(function() {
-    Route::get('post', [PostController::class, 'index']);
+    Route::get('post', [PostController::class, 'index'])->name('post.index');
     Route::get('post/create', [PostController::class, 'create'])->name('create');
 // });
 
@@ -46,8 +46,7 @@ Route::get('post/show/{post}', [PostController::class, 'show'])->name('post.show
 Route::get('post/{post}/edit', [PostController::class, 'edit'])->name('post.edit');
 // 更新処理 patchの代わりにputでも問題ない
 Route::patch('post/{post}', [PostController::class, 'update'])->name('post.update');
-
-
-
+// 削除処理
+Route::delete('post/{post}', [PostController::class, 'destroy'])->name('post.destroy');
 
 require __DIR__.'/auth.php';
