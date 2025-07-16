@@ -17,7 +17,7 @@
         <!-- CoontrollerからPost $postを渡している -->
         <form method="POST" action="{{ route('post.update', $post) }}">
             @csrf
-            @methos('patch')
+            @method('patch')
             <div class="mt-8">
                 <div class="w-full flex flex-col">
                     <label for="title" class="font-semibold mt-4">件名</label>
