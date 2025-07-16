@@ -14,7 +14,10 @@ class PostController extends Controller
     public function index()
     {
         // Postモデルを通じて、postsテーブルのデータを全て取得
-        $posts = Post::all();
+        // $posts = Post::all();
+
+        // ペジネーションを使用して表示
+        $posts = Post::paginate(10);
         return view('post.index', compact('posts'));
     }
 
@@ -41,7 +44,7 @@ class PostController extends Controller
         // **Postとは静的メソッドでなく、Eloquentモデルに組み込まれた「静的風API」**です
         $post = Post::create($validated);
 
-        // falshだとVScodeの補完エラーが出るのでwithを使用
+        // flashだとVScodeの補完エラーが出るのでwithを使用
         // $request->session()->flash('message', '保存しました');
         // return redirect()->route('create'); // ← 明示的に
         return redirect()->route('post.index')->with('message', '保存しました');
